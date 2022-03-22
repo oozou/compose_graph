@@ -41,26 +41,26 @@ fun LineChart(
                 //You may wonder, why divide by charData.size + 1 rather than just charData.size.
                 //Let me illustrate with an example.
                 //Suppose size.width = 100 and we have 10 data points then 100/10 = 10
-                //The x coordinate will be positioned at point 10, 20, 30, 40...100
-                //Remember the width of the canvas is a 100, if a line is drawn up to that point,
+                //The x coordinate will then be positioned at point 10, 20, 30, 40...100
+                //Remember, the width of the canvas is a 100, if a line is drawn up to that point,
                 //then there will be no space at the end of the canvas. Keep in mind that there was
                 //a 10 unit space at the beginning of the canvas. So in order to solve this problem,
-                //let's divide (size.width) / (data.size + 1) == 100 / 11 = 9.09
+                //let's divide (size.width) / (chartData.size + 1) == 100 / 11 = 9.09
                 //The x coordinates will then be positioned at 9.09, 18.18, 27.27...90.9
                 //This way, at the beginning of the canvas, we have a space of 9.09 and at the end of
                 //of the canvas after the last line has been drawn, we will still have a space of 9.1.
                 //This ensures we have almost equal spaces at the beginning and end of the canvas.
                 val intervalBtwXCoordinates = size.width / (chartData.size + 1)
 
-                //Current horizontal position is set to zero which is the leftmost
-                //region of the canvas. This value will be gradually moved to the rightmost region
+                //The current horizontal position is set to zero which is the leftmost
+                //region of the canvas. This value, will be gradually moved to the rightmost region
                 //as the canvas draws the chart.
                 var currentXCoordinate = 0F
 
                 //Represents maximum value in the chart data
                 val maxValue = chartData.maxOrNull() ?: 0
 
-                //Represents a list coordinates x and y axis for each chartData point
+                //Represents a list of coordinates x,y axis for each chartData point
                 val dataCoordinates = mutableListOf<PointF>()
                 
                 chartData.forEach { value ->
@@ -74,7 +74,7 @@ fun LineChart(
                     //The coordinateY for data (20) will be (100 - 20) * 5 = 400
                     //The coordinateY for data (80) will be (100 - 80) * 5 = 100
                     //Thus, data (80) will be positioned higher on the canvas
-                    //   as it is closer to zero than data (20)
+                    //   as it is closer to the origin zero than data (20)
                     //Also, the calculations done for coordinateY ensures we get a value within the
                     //range of the height of the canvas.
                     val coordinateY = (maxValue - value) * (size.height / maxValue)
