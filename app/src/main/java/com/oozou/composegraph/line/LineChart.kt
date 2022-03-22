@@ -75,7 +75,7 @@ fun LineChart(
                     //The coordinateY for data (80) will be (100 - 80) * 5 = 100
                     //Thus, data (80) will be positioned higher on the canvas
                     //   as it is closer to zero than data (20)
-                    //Also, the calculations done for coordinateY ensures we get a value withing the
+                    //Also, the calculations done for coordinateY ensures we get a value within the
                     //range of the height of the canvas.
                     val coordinateY = (maxValue - value) * (size.height / maxValue)
                     val coordinateX = currentXCoordinate + intervalBtwXCoordinates
