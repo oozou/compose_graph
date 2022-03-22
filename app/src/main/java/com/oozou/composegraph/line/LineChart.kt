@@ -101,5 +101,5 @@ fun LineChart(
 @Preview
 @Composable
 fun PreviewLineChartScreen(){
-    LineChart(DataFactory.lineChartData())
+    LineChart(DataFactory.lineData())
 }

@@ -51,7 +51,7 @@ fun MainScreen() {
         },
     ) {
         NavHost(navController, startDestination = Screen.LINE.route) {
-            composable(Screen.LINE.route) { LineChart(DataFactory.lineChartData()) }
+            composable(Screen.LINE.route) { LineChart(DataFactory.lineData()) }
             composable(Screen.PIE.route) { LineChart(emptyList()) }
             composable(Screen.BAR.route) { LineChart(emptyList()) }
         }
