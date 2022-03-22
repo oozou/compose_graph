@@ -1,10 +1,12 @@
 package com.oozou.composegraph
 
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
@@ -12,8 +14,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.oozou.composegraph.line.LineChart
-import androidx.compose.material.*
-import androidx.compose.ui.tooling.preview.Preview
+import com.oozou.composegraph.util.DataFactory
 
 @Composable
 fun MainScreen() {
@@ -40,7 +41,7 @@ fun MainScreen() {
                                 // Avoid multiple copies of the same destination when
                                 // reselecting the same item
                                 launchSingleTop = true
-                                // Restore state when reselecting a previously selected item
+                                // Restore state when re-selecting a previously selected item
                                 restoreState = true
                             }
                         }
@@ -50,9 +51,9 @@ fun MainScreen() {
         },
     ) {
         NavHost(navController, startDestination = Screen.LINE.route) {
-            composable(Screen.LINE.route) { LineChart() }
-            composable(Screen.PIE.route) { LineChart() }
-            composable(Screen.BAR.route) { LineChart() }
+            composable(Screen.LINE.route) { LineChart(DataFactory.lineChartData()) }
+            composable(Screen.PIE.route) { LineChart(emptyList()) }
+            composable(Screen.BAR.route) { LineChart(emptyList()) }
         }
     }
 }
