@@ -6,7 +6,7 @@ Some of the graph components that will be explored include: line chart, pie char
 
 ## LINE CHART
 Function Definition:
-```
+```kotlin
 fun LineChart(
      chartData: List<Int>,
      elevation: Dp = 5.dp,
@@ -21,7 +21,7 @@ Calling the line chart composable with just the data points will cause the LineC
 default values for the remaining parameters.
 
 Example:
-```
+```kotlin
 LineChart(listOf(10, 40, 20, 30, 80, 60))
 ```
 
