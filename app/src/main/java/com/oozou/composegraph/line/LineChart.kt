@@ -21,21 +21,19 @@ import com.oozou.composegraph.util.DataFactory
 @Composable()
 fun LineChart(
     chartData: List<Int>,
-    elevation: Dp = 10.dp,
+    elevation: Dp = 5.dp,
     shape: Shape = RoundedCornerShape(5.dp),
     strokeWidth: Float = 8f,
     strokeColor: Color = colorResource(id = R.color.purple_200),
     canvasHeight: Dp = 270.dp,
-    modifier: Modifier = Modifier.fillMaxWidth().height(360.dp).padding(16.dp)
+    modifier: Modifier = Modifier.fillMaxWidth().height(360.dp).padding(20.dp)
 ) {
     Card(
         modifier = modifier,
         elevation = elevation,
         shape = shape
     ) {
-        Column(modifier = Modifier
-            .padding(16.dp)
-            .wrapContentSize(align = Alignment.BottomStart)) {
+        Column(modifier = Modifier.wrapContentSize(align = Alignment.BottomStart)) {
             Canvas(modifier = Modifier
                 .fillMaxWidth()
                 .height(canvasHeight)) {
