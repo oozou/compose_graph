@@ -1,10 +1,13 @@
 package com.oozou.composegraph
 
+import android.widget.Toast
+import androidx.compose.foundation.layout.Box
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -14,6 +17,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.oozou.composegraph.line.LineChart
+import com.oozou.composegraph.pie.PieChart
 import com.oozou.composegraph.util.DataFactory
 
 @Composable
@@ -50,9 +54,14 @@ fun MainScreen() {
             }
         },
     ) {
+        val context = LocalContext.current
         NavHost(navController, startDestination = Screen.LINE.route) {
             composable(Screen.LINE.route) { LineChart(DataFactory.lineData()) }
-            composable(Screen.PIE.route) { LineChart(emptyList()) }
+            composable(Screen.PIE.route) {
+                PieChart(DataFactory.pieData()) {
+                    Toast.makeText(context, "$${DataFactory.pieData()[it].value}", Toast.LENGTH_LONG).show()
+                }
+            }
             composable(Screen.BAR.route) { LineChart(emptyList()) }
         }
     }
